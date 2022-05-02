@@ -1,0 +1,27 @@
+.customCursor {
+  background: #000;
+  position: fixed;
+  border: 1px solid rgb(19, 18, 18);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 999999;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  transition: 0.1s;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  filter: invert(1) contrast(2) grayscale(1);
+}
+
+.customCursor::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}

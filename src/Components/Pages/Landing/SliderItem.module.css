@@ -1,0 +1,19 @@
+.slide {
+  opacity: 0;
+  transition: 900ms ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.slideActive {
+  opacity: 1;
+  transition: 700ms ease;
+  transition-delay: 300ms;
+  transform: translate(-50%, -50%) scale(1.06);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

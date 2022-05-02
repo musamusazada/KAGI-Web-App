@@ -1,0 +1,17 @@
+.sidebarWrapper {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  left: -100%;
+  top: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 !important;
+  transition: 600ms;
+}
+
+.sidebarWrapper.active {
+  left: 70px;
+}
