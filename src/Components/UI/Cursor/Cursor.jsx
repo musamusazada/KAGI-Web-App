@@ -5,8 +5,8 @@ function Cursor() {
   const cursorRef = useRef(null);
   const colorVal = useColorModeValue("1px solid black", "1px solid white");
   useEffect(() => {
-    document.addEventListener("mousemove", function (event) {
-      const { clientX, clientY } = event;
+    const mouseMoveHandler = (e) => {
+      const { clientX, clientY } = e;
       const mouseX = clientX - cursorRef.current.clientWidth / 2;
       const mouseY = clientY - cursorRef.current.clientHeight / 2;
       if (
@@ -18,7 +18,12 @@ function Cursor() {
       } else {
         cursorRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px ,0) `;
       }
-    });
+    };
+    document.addEventListener("mousemove", mouseMoveHandler);
+
+    return () => {
+      document.removeEventListener("mousemove", mouseMoveHandler);
+    };
   }, []);
   return (
     <Box
