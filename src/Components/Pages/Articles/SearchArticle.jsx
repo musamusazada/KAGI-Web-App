@@ -26,11 +26,6 @@ function SearchArticle() {
           size={["35px", "50px"]}
           bg="whiteAlpha.900"
           transition="300ms"
-          _hover={{
-            bottom: "30px",
-            backgroundColor: "whitesmoke",
-            transform: "scale(1.2)",
-          }}
         >
           <HiOutlineSearch color="black" fontSize={["10px", "20px"]} />
         </Circle>

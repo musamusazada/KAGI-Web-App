@@ -29,24 +29,26 @@ function Sidebar(props) {
           Home
         </CharkaLink>
       </Link>
-      <Link to="/courses">
+      <Link to="/livechat">
         <CharkaLink
           className="hover-effect"
           color={colorVal}
           fontSize={["2xl", "3xl"]}
           fontFamily={"'Source Serif Pro', serif;'"}
         >
-          Courses
+          Live Chat
         </CharkaLink>
       </Link>
-      <CharkaLink
-        className="hover-effect"
-        color={colorVal}
-        fontSize={["2xl", "3xl"]}
-        fontFamily={"'Source Serif Pro', serif;'"}
-      >
-        Motivation
-      </CharkaLink>
+      <Link to="/motivation">
+        <CharkaLink
+          className="hover-effect"
+          color={colorVal}
+          fontSize={["2xl", "3xl"]}
+          fontFamily={"'Source Serif Pro', serif;'"}
+        >
+          Motivation
+        </CharkaLink>
+      </Link>
       <Link to={"/articles"}>
         <CharkaLink
           className="hover-effect"

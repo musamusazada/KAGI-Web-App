@@ -34,7 +34,7 @@ function Article(props) {
           </sup>
         </HStack>
         <Box alignSelf="start">
-          <Author size="sm" name={props.author} source={props.source} />
+          <Author size="sm" name={props.author} source={props.photoURL} />
         </Box>
       </VStack>
     </Link>

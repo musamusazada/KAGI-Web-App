@@ -6,10 +6,10 @@ import Logo from "../../../Assets/logowo.png";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import NavigationLinks from "./NavigationLinks";
 import Sidebar from "./Sidebar/Sidebar";
+import AuthButton from "../../UI/AuthButton/AuthButton";
 function Navbar() {
   const [sidebarActive, setSidebarActive] = useState(false);
   const toggleSidebar = () => setSidebarActive(!sidebarActive);
-
   return (
     <nav>
       <Stack
@@ -21,6 +21,7 @@ function Navbar() {
         padding="10px 4px"
         borderBottom={["1ps solid black", null]}
         borderRight={[null, "1px solid lightgray"]}
+        zIndex="100"
       >
         <Stack direction={["row", "column"]} spacing={5}>
           <Link to={"/"}>
@@ -30,6 +31,7 @@ function Navbar() {
           </Link>
           <ColorToggle />
         </Stack>
+        <AuthButton />
         <HiOutlineMenuAlt1
           className="hover-effect"
           onClick={toggleSidebar}

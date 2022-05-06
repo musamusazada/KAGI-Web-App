@@ -89,3 +89,59 @@ body {
   transition: 0.3s;
   z-index: -3;
 }
+
+/* Infinite Text */
+.infiniteText {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: text 65s linear infinite;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  z-index: -4;
+}
+
+@keyframes text {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.hideText {
+  background-color: #fff;
+  width: 69px;
+  height: 100px;
+  position: fixed;
+  top: 65%;
+  left: 0;
+}
+@media only screen and (min-width: 200px) {
+  .hideText {
+    display: none;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .hideText {
+    display: inline-block;
+  }
+}
+
+.account-bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -10;
+}
+
+.white--placeholder::placeholder {
+  color: #fff;
+}
+
+.pushBottom {
+  margin-bottom: 100px;
+}

@@ -10,6 +10,7 @@
   align-items: center;
   margin: 0 !important;
   transition: 600ms;
+  z-index: 10;
 }
 
 .sidebarWrapper.active {

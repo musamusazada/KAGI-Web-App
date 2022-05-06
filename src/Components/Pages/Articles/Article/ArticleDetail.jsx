@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   Center,
   VStack,
@@ -10,6 +10,9 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import { getDoc, doc } from "firebase/firestore";
+import { getDownloadURL, ref } from "firebase/storage";
+import { db, storage } from "../../../../firebase-config";
 import Author from "../../../Author";
 import authorPP from "../../../../Assets/ProfilePics/author1.jpeg";
 import plantTree from "../../../../Assets/Articles/scenery.jpg";
@@ -29,10 +32,19 @@ const DUMMY_DATA = {
 };
 
 function ArticleDetail() {
+  const [data, setData] = useState({});
+  const [pathRef, setPathRef] = useState("");
+  const [url, setUrl] = useState("");
   const urlParams = useParams();
+
   //Id for database fetching
   const articleID = urlParams.articleDetail;
-
+  const articleRef = doc(db, "articles", articleID);
+  getDoc(articleRef).then((doc) => {
+    setData(doc.data());
+  });
+  // setPathRef(ref(storage, data.filename));
+  // setUrl(getDownloadURL(pathRef));
   return (
     <Center
       w="100%"
@@ -53,7 +65,7 @@ function ArticleDetail() {
           date={DUMMY_DATA.date}
         />
         <Heading className="f-ssp" fontSize={["5xl", null, "7xl"]}>
-          {DUMMY_DATA.title}
+          {data.title}
         </Heading>
         <HStack spacing={5}>
           <Flex alignItems="center" justifyContent="center">
@@ -68,12 +80,12 @@ function ArticleDetail() {
               marginStart={1}
               fontWeight={"bold"}
             >
-              {DUMMY_DATA.category}
+              {data.category}
             </Text>
           </Flex>
           <Flex>
-            <Text className="f-ssp">Tags: </Text>
-            {DUMMY_DATA.tags.map((el) => (
+            {/* <Text className="f-ssp">Tags: </Text> */}
+            {/* {data.tags.map((el) => (
               <Text
                 fontWeight={"bold"}
                 className="hover-effect"
@@ -85,14 +97,14 @@ function ArticleDetail() {
               >
                 #{el}
               </Text>
-            ))}
+            ))} */}
           </Flex>
         </HStack>
         <Image
           maxW="100%"
           width={["100%", "300px", "500px", "800px"]}
           className="hover-effect"
-          src={DUMMY_DATA.coverImage}
+          src={url}
           borderRadius={10}
           boxShadow={"xl"}
         />
@@ -104,7 +116,7 @@ function ArticleDetail() {
           alignSelf="start"
           _selection="black"
         >
-          {DUMMY_DATA.content}
+          {data.description}
         </Text>
         <Text fontFamily="f-ssp" fontWeight="600" alignSelf="start">
           Share on social media

@@ -10,6 +10,13 @@ import Error from "./Components/Pages/Error/Error";
 import ArticleDetail from "./Components/Pages/Articles/Article/ArticleDetail";
 import About from "./Components/Pages/About/About";
 import Courses from "./Components/Pages/Courses/Courses";
+import CourseDetail from "./Components/Pages/Courses/CourseDetail";
+import Account from "./Components/Pages/Account/Account";
+import CourseManagement from "./Components/Pages/CourseManagement/CourseManagement";
+import CourseStream from "./Components/Pages/CourseManagement/CourseStream";
+import LiveChat from "./Components/Pages/LiveChat/LiveChat";
+import Motivation from "./Components/Pages/Motivation/Motivation";
+
 function App() {
   return (
     <BrowserRouter>
@@ -23,14 +30,22 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/courses" element={<Courses />} />
+            <Route path="/livechat" element={<LiveChat />} />
+            <Route
+              path="/courses/course/:courseDetail"
+              element={<CourseDetail />}
+              exact
+            />
             <Route path="/articles" element={<Articles />} />
+            <Route path="/motivation" element={<Motivation />} />
             <Route
               path="/articles/article/:articleDetail"
               element={<ArticleDetail />}
               exact
             />
-
+            <Route path="/mycourses" element={<CourseManagement />} />
+            <Route path="/coursestream/:courseId" element={<CourseStream />} />
+            <Route path="/account" element={<Account />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<Error />} />
           </Routes>

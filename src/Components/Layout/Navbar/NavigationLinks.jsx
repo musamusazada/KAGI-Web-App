@@ -13,12 +13,16 @@ function NavigationLinks() {
       justify={"center"}
       align={"center"}
     >
-      <BsBoxSeam size={20} />
+      <Link to="/mycourses">
+        <BsBoxSeam size={20} />
+      </Link>
       <BsBookmarkHeart size={20} />
       <Link to="/articles">
         <RiArticleLine size={21} />
       </Link>
-      <RiAccountCircleLine size={23} />
+      <Link to="/account">
+        <RiAccountCircleLine size={23} />
+      </Link>
     </Stack>
   );
 }

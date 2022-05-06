@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase-config";
 import { VStack, Heading, Divider } from "@chakra-ui/react";
 import CreateArticle from "./CreateArticle";
 import Article from "./Article";
@@ -49,6 +51,17 @@ const ArticleData = [
   },
 ];
 function Articles() {
+  const [articles, setArticles] = useState([]);
+  const articlesCollectionRef = collection(db, "articles");
+  useEffect(() => {
+    const getArticles = async () => {
+      const data = await getDocs(articlesCollectionRef);
+      setArticles(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getArticles();
+    console.log(articles);
+  }, [articlesCollectionRef]);
+
   return (
     <>
       <VStack
@@ -66,7 +79,7 @@ function Articles() {
           Articles
         </Heading>
         <VStack spacing={20} divider={<Divider />}>
-          {ArticleData.map((el) => (
+          {articles.map((el) => (
             <Article {...el} />
           ))}
         </VStack>
